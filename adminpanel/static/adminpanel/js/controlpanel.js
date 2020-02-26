@@ -21,25 +21,13 @@ $(document).ready(function() {
     //  }
     $("input").attr("min","0");
 
-    $("#btn_update").click(function() {
+    $("#btn_update").click(function(event) {
+      event.preventDefault();
       $(".myinput").prop("disabled", false);
       $("#btn_update").css({'display':'none'})
-      $("#btn_save").css({'display':'inline'})
+      $("#save_btn").css({'display':'inline'})
     });
-    $("#btn_save").click(function() {
-       var field = document.getElementsByClassName("myinput")
-       for(var i=0;i<field.length;i++){
-           var temp = field[i].value;
-           temp = Number(temp)
-           if(temp < 0){
-               temp = Math.abs(temp)
-               field[i].value = temp
-           }
-       }
-       $("#btn_save").css({'display':'none'})
-       $("#btn_update").css({'display':'inline'})
-      $(".myinput").prop("disabled", true);
-    });
+  
   });
 
   function createName(i,j){
