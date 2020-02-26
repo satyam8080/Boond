@@ -1,0 +1,98 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            control panel
+        </title>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <link href="{% static 'adminpanel/css/controlpanel.css' %}" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+    <script src="{% static 'adminpanel/js/controlpanel.js' %}"></script>
+    </head>
+    <body>
+        <div class="nav_bar">
+            <div class="navimage">
+                <img src="{% static 'adminpanel/img/drop.png' %}" alt="drop">
+            </div>
+        <div class="navname">
+            <h2>Blood Bank {{ request.session.admin_name }} </h2>
+        </div>
+        <div class="navbutton">
+          <form action="logout" method="POST" >
+            {% csrf_token %}
+            <button onclick="">Log Out</button>
+          </form>
+        </div>
+        
+        </div>
+
+        <div class="myUpdateTable">
+            <form action="update" method="post" id="update_form"> 
+                {% csrf_token %}
+              <table class="table table-bordered table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Bag (100ml)</th>
+                    <th scope="col">Bag (250ml)</th>
+                    <th scope="col">Bag (400ml)</th>
+                    <th scope="col">Bag (500ml)</th>
+                    <th scope="col">Bag (600ml)</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  <!-- start -->
+                  {% with j=0 %}
+                  {% for bags_group in bloodbags %}
+                  <tr>
+                      {% with counter=forloop.counter %}
+                     <td scope='col'>{{ bags_group.0.blood_group }}</td>
+                     
+                     {% for bag in bags_group %}
+                        <td scope='col'>
+                        <input disabled value='{{ bag.quantity }}' class='myinput' name="{{bag.id}}" type='number' />
+                        </td>
+                        
+                     {% endfor %}
+                     {% endwith %}
+                  </tr>
+                  {% endfor %}
+                  {% endwith %}
+                 
+                </tbody>
+              </table>
+              
+            <button
+              type="button"
+              id="btn_save"
+              class="btn btn-secondary"
+            >
+              SAVE DATA
+            </button>
+            <button type="submit">sub</button>
+
+            </form>
+            <button
+              type="button"
+              id="btn_update"
+              class="btn btn-secondary"
+            >
+              UPDATE DATA
+            </button>
+            
+          </div>
+
+
+
+    </body>
+    <script>
+    </script>
+</html>
