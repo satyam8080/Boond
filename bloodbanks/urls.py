@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('banks/', include('banks.urls')),
     path('', include('adminpanel.urls')),
+    path('users/', include('donate.urls')),
     path('api-auth/', include('rest_framework.urls')),
     # path('register', include('adminpanel.urls')),
 ]

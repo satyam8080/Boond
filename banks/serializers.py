@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import State, BloodBank, BloodGroup, Size, BloodBag
+from .models import State, BloodBank, BloodGroup, Size, BloodBag, TotalBlood
 
 class BloodBankSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,5 +29,17 @@ class DynamicSerializer(BloodBankSerializer):
             'latitude',
             'longitude' 
         )        
+
+
+class TotalBloodSerializer(serializers.ModelSerializer):
+    blood_bank = DynamicSerializer()
+
+    class Meta:
+        model = TotalBlood
+        fields = (
+            'total_ml',
+            'blood_bank',
+        )
+
 
 
