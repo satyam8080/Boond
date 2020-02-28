@@ -62,11 +62,17 @@ def login(request):
     q_password = bank.password 
     q_id =  bank.id 
     q_name = bank.name
+    q_lati = bank.latitude
+    q_lngi = bank.longitude
+    q_address = bank.address
    
 
     if email == q_email and password == q_password:
         request.session['admin_id'] = q_id
         request.session['admin_name'] = q_name
+        request.session['lati'] = q_lati
+        request.session['lngi'] = q_lngi
+        request.session['address'] = q_address
         return HttpResponseRedirect(reverse('admin-home'))
     
     else:
@@ -135,6 +141,9 @@ class CreateView(APIView):
             bank = BloodBank.objects.get(email=email,password=password)
             request.session['admin_id'] = bank.id
             request.session['admin_name'] = bank.name
+            request.session['lati'] = bank.latitude
+            request.session['lngi'] = bank.longitude
+            request.session['address'] = bank.address
             init_bloodbags(bank)
             return HttpResponseRedirect(reverse('admin-home'))
 
