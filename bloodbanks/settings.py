@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'banks.apps.BanksConfig',
     'adminpanel.apps.AdminpanelConfig',
+    'donate.apps.DonateConfig',
 ]
 
 MIDDLEWARE = [
