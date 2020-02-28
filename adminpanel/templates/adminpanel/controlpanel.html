@@ -119,7 +119,9 @@
           </div>
           <br>
           <hr class="hr">
-          <h2 >Location Of Other BloodBanks</h2>
+          <h2 style=" text-align: center;
+          color: #F38A8A;
+          display: none;" >Location Of Other BloodBanks</h2>
           <div id="map"></div>
           <script>
             var map;
@@ -133,11 +135,11 @@
           //  }
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: center,
+          center: {lat :27.0278047,lng :75.8955757},
           zoom: 14
         });
         var marker = new google.maps.Marker({
-          position : center,
+          position : {lat :27.0278047,lng :75.8955757},
           map:map,
         });
         var markwindow  = new google.maps.InfoWindow({

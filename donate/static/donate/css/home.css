@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/*background-color: lightpink;*/
+}
+
+.listBox  {
+	background-color: lightblue;
+	max-width: 80%;
+	margin: auto;
+	padding: 2rem
+}
+
+.selectOne {
+  width: 75%;
+  background-color: green;
+  margin: 0 auto;
+}
+
+.common {
+  width: 100%;
+  height: 55px;
+  font-size: 25px;
+  line-height: 2;
+  border: none;
+  outline: none;
+  /* background-color: #d5d5d5; */
+  border-bottom: 2px solid darkgray;
+  /* color: white; */
+}
+
+.cities {
+  width: 75%;
+  /* background-color: green; */
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.mybtn {
+	background-color: #F977A6;
+	color: white;
+}
+
+.mybtn:hover {
+    background-color: #F64787;
+	font-weight: bold;
+	color: white;
+}
+.card-body p{
+    text-align: center;
+    color:red;
+}
+.card-header{
+    background-color: #FDDAF3 !important;
+}
+.card-footer{
+    background-color: #FDDAF3 !important;
+}
+#hidden_p{
+    display: none;
+}
+#hr{
+    display: none;
+    border-top: 1px solid #888888;
+}
+#h4{
+    display: none;
+    text-align: center;
+}
