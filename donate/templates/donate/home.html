@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nearest Blood Banks List</title>
+  <title>Nearest Blood Banks List</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -12,12 +13,50 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>    
 <script src="{% static 'donate/js/home.js' %}"></script>
+<script>
+  function selectcity(){
+    var stateName = $( "#selectState option:selected" ).text();
+     $.ajax({
+         url : 'https://indian-cities-api-nocbegfhqg.now.sh/cities',
+         data : {State: stateName},
+         success : function(cities){
+             $("#selectCity").empty()
+             $("#selectCity").append("<option disabled selected>Select City</option>")
+             if(cities.length == 0){
+                var str =  $("#selectState option:selected").text()
+                 $("#selectCity").append("<option>"+str+"</option>")
+             }
+             else{
+             for(var i=0;i<cities.length;i++){
+                 var temp = cities[i].City
+                 var str = "<option value='"+temp+"' >"+temp+"</option>"
+                 $("#selectCity").append(str)
+             }
+             }
+         }
+     })
+  }
+
+</script>
+
 	<link href="{% static 'donate/css/home.css' %}" rel="stylesheet">
 </head>
 <body>
+    <div class="nav_bar">
+        <div class="navimage">
+            <img src="{% static 'adminpanel/img/blood-drop.png' %}" alt="drop">
+        </div>
+    <div class="navname">
+        <h2>Blood Bank</h2>
+    </div>
+    <div class="navbutton">
+        <button class="button" style="margin-right: 2rem;" id="register_btn">Register</button>
+    </div>
+    
+    </div>
 
 
-<div class="card  w-75 m-auto" id="form_div">
+<div class="card  w-75 m-auto" id="form_div" style="margin-top: 2rem !important;">
   <div class="card-header">
     Fill Details
   </div>
@@ -42,69 +81,164 @@
       </div>
   </div>
   <div class="card-footer">
-      <button class="btn mybtn" id="info_btn">Submit</button>
+      <button class="mybtn" id="info_btn">Submit</button>
   	<!-- <a href="#" class="btn mybtn">Submit</a> -->
   </div>
 </div>
 <hr id="hr">
 <h4 id="h4">CAN'T FIND ANY BLOODBANK IN YOUR CITY</h4>
-
-
-
-
-
  <div id="accordion" class="listBox" style="display: none;">
-
-
-<!--<div class="card mb-1">
-    <div class="card-header alert-secondary" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-          Collapsible Group Item #3
-        </button>
-        <span class="ml-2">45 km.</span>
-        <span class="ml-2 text-danger">recommended</span>
-      </h5>
-    </div>
-    <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-
-  <div class="card mb-1">
-    <div class="card-header alert-secondary color-" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-  <div class="card mb-1">
-    <div class="card-header alert-secondary" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>-->
-
 </div> 
+
+
+<div id="register_form" style="margin-top: 3rem;">
+  <h4>Your Donation can save a life..........</h4>
+  <h4>If you have a <b style="color: red;">RARE( O- , AB- )</b> group then please <b style="color: red;">REGISTER</b></h4>
+  <h3>If already registered then <a style="cursor: pointer;" id="close">IGNORE</a></h3>
+  <div class="wrapper">
+    <div class="title">
+      Register
+    </div>
+    <div class="form" style="margin-top: 2rem;">
+      <form action="/register" method="post">
+        {% csrf_token %}
+        <div class="input_field">
+          <label for="">Name</label>
+          <input type="text" name="name" class="input" required/>
+        </div>
+        <div class="input_field">
+          <label for="">Email Address</label>
+          <input type="email" name="email" class="input"  required/>
+        </div>
+        <div class="input_field">
+          <label for="">Mobile Number</label>
+          <input type="number" name="mobile_no" class="input" required />
+        </div>
+        <div class="input_field">
+          <label for="">Blood Group</label>
+          <div class="custom_select">
+            <select name="group" required>
+              <option selected disabled>Select Group</option>
+              <option value="1">A-</option>
+              <option value="2">A+</option>
+              <option value="3">B-</option>
+              <option value="4">B+</option>
+              <option value="5">AB-</option>
+              <option value="6">AB+</option>
+              <option value="7">O-</option>
+              <option value="8">O+</option>
+            </select>
+          </div>
+        </div>
+        <p style="color: red; text-align: center; display: none;" id="show">*Enter Correct Blood Group*</p>
+        <div class="input_field">
+          <label for="">Address</label>
+          <input type="text" name="address" id="address" class="input" required/>
+        </div>
+        <div class="input_field">
+          <label for="">State</label>
+          <div class="custom_select">
+            <select name="state" id="selectState" onchange="selectcity()">
+              <option selected disabled>Select State</option>
+            </select>
+          </div>
+        </div>
+        <div class="input_field">
+          <label for="">City</label>
+          <div class="custom_select">
+            <select name="city" id="selectCity"  >
+              <option disabled selected>Select</option>
+            </select>
+          </div>
+        </div>      
+        <div class="input_field">
+          <label for="">Postal Code</label>
+          <input type="number" name="pincode" id="pincode" class="input" required />
+        </div>
+        <div class="input_field">
+          <input type="submit" value="Register" class="btn" />
+            <input type="reset" style="margin-left: 1rem" value="reset" class="btn">
+        </div>
+        <div style="display: none;">
+          <input type="text" id="lat" name="latitude">
+          <input type="text" id="lng" name="longitude">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
 
 </body>
 </html>
+
+<!--  <div class="wrapper">
+      <div class="title">
+        Registration Form
+      </div>
+      <div class="form">
+        <form action="" method="">
+          <div class="input_field">
+            <label for="">First Name</label>
+            <input type="text" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">Last Name</label>
+            <input type="text" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">Password</label>
+            <input type="password" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">Confirm password</label>
+            <input type="password" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">State</label>
+            <div class="custom_select">
+              <select name="" id="">
+                <option value="">Select</option>
+                <option value="male">Uttar Pradesh</option>
+                <option value="female">Rajasthan</option>
+              </select>
+            </div>
+          </div>
+          <div class="input_field">
+            <label for="">City</label>
+            <div class="custom_select">
+              <select name="" id="">
+                <option value="">Select</option>
+                <option value="male">Bareilly</option>
+                <option value="female">Alwar</option>
+              </select>
+            </div>
+          </div>
+          <div class="input_field">
+            <label for="">Email Address</label>
+            <input type="email" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">Phone Number</label>
+            <input type="number" class="input" />
+          </div>
+          <div class="input_field">
+            <label for="">Postal Code</label>
+            <input type="number" class="input" />
+          </div>
+          <div class="input_field terms">
+            <label for="" class="check">
+              <input type="checkbox" />
+              <span class="checkmark"></span>
+              <p>Agreed to terms and conditions</p>
+            </label>
+          </div>
+          <div class="input_field">
+            <input type="submit" value="Register" class="btn" />
+              <input type="reset" style="margin-left: 1rem" value="reset" class="btn">
+          </div>
+        </form>
+      </div>
+    </div> -->

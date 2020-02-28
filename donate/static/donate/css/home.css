@@ -1,6 +1,48 @@
+body{
+    background-color: #F1EFEF;
+}
+h4{
+    text-align: center;
+    color: #F89393;
+}
+h3{
+    text-align: center;
+    color: #F89393;
+}
 *{
 	margin: 0;
 	padding: 0;
+}
+.nav_bar{
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(to right,#F89393,#E0D8D8);
+}
+.navimage{
+    display: flex;
+    justify-content: flex-start;
+    width: 33%;
+}
+.navname{
+    display: flex;
+    justify-content: center;
+    padding-top: .3rem;
+    width: 33%;
+}
+.navname h2{
+    font-weight: bold;
+}
+.navbutton{
+    display: flex;
+    justify-content: flex-end;
+    width: 33%;
+    padding-top: .8rem;
+}
+
+.navimage img{
+  width: 4rem;
+  height: 4rem;
+  margin-left: 2rem;
 }
 
 body {
@@ -40,7 +82,10 @@ body {
 }
 
 .mybtn {
-	background-color: #F977A6;
+    background-color: #F977A6;
+    width: 6rem;
+    border: none;
+    height: 2rem;
 	color: white;
 }
 
@@ -70,3 +115,152 @@ body {
     display: none;
     text-align: center;
 }
+.button_div{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 2rem;
+    padding-bottom: 1.2rem;
+    width: 80%;
+ }
+ .button_div button{
+     display: block;
+     float: right;
+     height: 2rem;
+     width: 5rem;
+     color: wheat;
+     background-color: #F38A8A;
+ }
+ .button_div:first-child{
+     float: left;
+ }
+ .button{
+     cursor: pointer;
+     background-color: #F38A8A !important;
+     color: white !important;
+     width: 8rem !important;
+     height: 2rem;
+     font-size: 1.2rem;
+     border-radius: 1rem;
+ }
+ button:active,button:focus{
+     outline: none;
+     /* border: none;
+     box-shadow: none; */
+ }
+
+/* for form */
+
+
+.wrapper {
+    max-width: 500px;
+    width: 100%;
+    margin: 10vh auto;
+    padding: 30px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0);
+    background-color: #fff;
+    /* text-align: center; */
+  }
+  
+  .title {
+    background-color: #FA7D8E;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0.25rem 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .form {
+    width: 100;
+  }
+  
+  .input_field {
+    margin-bottom: 15px;
+    /* background-color: lightgreen; */
+    display: flex;
+    align-items: center;
+  }
+  
+  .input_field label {
+    width: 200px;
+    color: #757575;
+    font-size: 14px;
+  }
+  
+  .input_field .input {
+    width: 100%;
+    outline: none;
+    /* border: 1px solid #d5dbd9; */
+    border: none;
+    border-bottom: 1px solid #d5dbd9;
+    /* background-color: rgba(233, 219, 219, 0.253); */
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+  }
+  
+  .custom_select {
+    position: relative;
+    width: 100%;
+    height: 37px;
+  }
+  
+  .custom_select select {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #d5dbd9;
+    width: 100%;
+    height: 100%;
+    padding: 8px 10px;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .custom_select:before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    border: 8px solid;
+    border-color: #d5dbd9 transparent transparent transparent;
+    pointer-events: none;
+  }
+  
+  .input_field .input:focus {
+    border-bottom: 1px solid #f19cdc;
+  }
+  
+  .input_field select:focus {
+    border: 1px solid #f09bda;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background-color: #f587c7;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background-color: #ffd658;
+  }
+  
+  @media (max-width: 420px) {
+    .input_field {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .input_field label {
+      margin-bottom: 5px;
+    }
+  }
+#register_form{
+    display: none;
+}  
