@@ -38,7 +38,6 @@ $(document).ready(function() {
       $.ajax({
         url : url,
         success : function(data){
-          console.log(data)
          var list = [];
          var address_list = [];
          for(var i=0;i<data.length;i++)
@@ -56,7 +55,7 @@ $(document).ready(function() {
        $("#total").val("");
       $("#myModal").css("display","none")
       $(".hr").css({'display':'block'})
-      $("h2").css({'display':'block'})
+      $("#h2").css({'display':'block'})
      $("#map").addClass("map")
  
      document.getElementById('map').scrollIntoView(true);
@@ -73,10 +72,14 @@ $(document).ready(function() {
      }
     }
     function addMarker(list,address_list){
+      console.log(list)
+      console.log(address_list)
 for(var i=0;i<list.length;i++){
+      if(!(list[i].lat == Number($("#lati").val()) && list[i].lng == Number($("#lngi").val()))){
       var marker = new google.maps.Marker({
         position : list[i],
         map:map,
+        icon:'http://maps.google.com/mapfiles/kml/shapes/hospitals.png'
       });
       var markwindow  = new google.maps.InfoWindow({
         content : `<h5>${address_list[i]}</h5>`
@@ -85,6 +88,7 @@ for(var i=0;i<list.length;i++){
         markwindow.open(map,marker)
       });
     }
+  }
 
 
 
@@ -124,11 +128,13 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
+
   modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
+
   modal.style.display = "none";
 }
 
