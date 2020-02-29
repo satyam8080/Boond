@@ -4,6 +4,7 @@ $(document).ready(function(){
     var groups = ["A-","A+","B-","B+","AB-","AB+","O-","O+"];
     
     $("#info_btn").click(function(){
+      $("#s_g").css('display','none')
       $("#b_a").css('display','none')
       $("#bb_a").css('display','block')
       $("#for_btn").css('display','none')
@@ -231,7 +232,7 @@ $("#info").click(function(){
   ind++;
   if(ind !=0)
   {
-    $("#s_c").css('display','none')
+   
     $("#s_g").css('display','none');
   url3 = "http://127.0.0.1:8000/users/results/group?city="+city+"&group="+ind;
   url4 = "http://127.0.0.1:8000/users/results/group/users?city="+city+"&group="+ind;
@@ -265,7 +266,7 @@ $("#accordion").append(toAppend2);
       }
     }
     else{
-      $("#s_c").css('display','block')
+     
     }
     }
   })
@@ -299,7 +300,7 @@ $("#accordion2").append(toAppend3);
    }
    else{
     $("#accordion2").append("<h4>Data Not Found</h4>")
-     $("#s_c").css('display','block')
+    
    }
    }
  })
