@@ -53,6 +53,19 @@ class RegisterUser(APIView):
 
 
 
+class FetchResultsByUsersGroup(APIView):
+    def get(self, request, *args, **kwargs):
+        user_city = request.query_params['city']
+        blood_group = request.query_params['group']
+        # user_state = request.query_params['state']
+        users = User.objects.filter(city=user_city, blood_group=blood_group)
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+
+
+
+
   
 
 
