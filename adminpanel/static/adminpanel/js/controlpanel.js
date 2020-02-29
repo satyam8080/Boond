@@ -34,7 +34,7 @@ $(document).ready(function() {
         index++;
 
         var total_ml_id = $("#total").val();
-        var url = "http://darkavenger.pythonanywhere.com/api/bloodbanks?blood_group="+index+"&total_ml="+total_ml_id;
+        var url = "http://boond.pythonanywhere.com/api/bloodbanks?blood_group="+index+"&total_ml="+total_ml_id;
       $.ajax({
         url : url,
         success : function(data){
