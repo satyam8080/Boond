@@ -56,16 +56,16 @@
     </div>
 
 
-<div class="card  w-75 m-auto" id="form_div" style="margin-top: 2rem !important;">
+<div class="card  w-75 m-auto" id="form_div" style="margin-top: 2rem !important; margin-bottom: 1rem;">
   <div class="card-header">
     Fill Details
   </div>
   <div class="card-body">
-      <p>*Blood Group not Mandatory*</p>
+      <p>*Blood Group not Mandatory in Donation*</p>
       <p id="hidden_p">*But City is Mandatory*</p>
   	   <div class="selectOne">
         <select class="common" id="list">
-          <option selected disabled>Select Blood Group</option>
+          <option selected>Select Blood Group</option>
           <option>A-</option>
           <option>A+</option>
           <option>B-</option>
@@ -81,13 +81,24 @@
       </div>
   </div>
   <div class="card-footer">
-      <button class="mybtn" id="info_btn">Submit</button>
+      <button class="mybtn" id="info_btn">Donate Blood</button>
+      <button class="mybtn" id="info">Find Blood</button>
   	<!-- <a href="#" class="btn mybtn">Submit</a> -->
   </div>
 </div>
 <hr id="hr">
+<h4 style="color: #fa3232; text-align: center; display: none;" id="s_g" >To Find Blood Please Select Blood Group</h4>
 <h4 id="h4">CAN'T FIND ANY BLOODBANK IN YOUR CITY</h4>
- <div id="accordion" class="listBox" style="display: none;">
+<h4 style="color: #fa3232; text-align: center; display: none;" id="s_c">CAN'T FIND ANY USER IN YOUR CITY</h4>
+<h4 style="color: #fa3232; text-align: center; display: none;" id="b_a" >BLOOD AVAILABILITY NEARBY</h4>
+<h4 style="color: #fa3232; text-align: center; display: none;" id="bb_a" >DONATE NEARBY</h4>
+<div class="for_btn" id="for_btn">
+  <button id="bloodb">BloodBank</button>
+  <button id="other_user">Other User</button>
+</div>
+ <div id="accordion" class="listBox" style="display: none; margin-top: 2rem;">
+</div> 
+<div id="accordion2" class="listBox" style="display: none; margin-top: 2rem;">
 </div> 
 
 
@@ -169,7 +180,10 @@
 
 </div>
 
+<script>
 
+
+</script>
 
 </body>
 </html>

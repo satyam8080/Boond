@@ -4,6 +4,10 @@ $(document).ready(function(){
     var groups = ["A-","A+","B-","B+","AB-","AB+","O-","O+"];
     
     $("#info_btn").click(function(){
+      $("#b_a").css('display','none')
+      $("#bb_a").css('display','block')
+      $("#for_btn").css('display','none')
+      $("#register_form").css('display','none');
         var list = $("#list option:selected").text();
         var city = $("#city_s").val();
         console.log("working")
@@ -37,15 +41,15 @@ $(document).ready(function(){
                             var toAppend = `  <div class="card mb-1">
                             <div class="card-header alert-secondary" id="headingThree">
                               <h5 class="mb-0">
-                                <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                   ${data[i].name}
                                 </button>
                               </h5>
                             </div>
                             <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                               <div class="card-body">
-                                <label>Address :- ${data[i].address} </label><br>
-                                <label>Pincode :- ${data[i].pincode} </label>
+                                <label><b>Address :-</b> ${data[i].address} </label><br>
+                                <label><b>Pincode :-</b>${data[i].pincode} </label>
                               </div>
                             </div>
                           </div>  `;
@@ -89,15 +93,15 @@ $(document).ready(function(){
                         var toAppend = `  <div class="card mb-1">
                         <div class="card-header alert-secondary" id="headingThree">
                           <h5 class="mb-0">
-                            <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                            <button class="btn collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                               ${data[i].blood_bank.name}
                             </button>
                           </h5>
                         </div>
                         <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                           <div class="card-body">
-                            <label>Address :- ${data[i].blood_bank.address} </label><br>
-                            <label>Pincode :- ${data[i].blood_bank.pincode} </label>
+                            <label><b>Address :-</b> ${data[i].blood_bank.address} </label><br>
+                            <label><b>Pincode :-</b> ${data[i].blood_bank.pincode} </label>
                           </div>
                         </div>
                       </div>  `;
@@ -107,16 +111,16 @@ $(document).ready(function(){
                             var toAppend = `  <div class="card mb-1">
                             <div class="card-header alert-secondary" id="headingThree">
                               <h5 class="mb-0">
-                                <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                  ${data[i].name}
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                  ${data[i].blood_bank.name}
                                 </button>
                                 <span class="ml-2 text-danger">recommended</span>
                               </h5>
                             </div>
                             <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                               <div class="card-body">
-                                <label>Address :- ${data[i].address} </label><br>
-                                <label>Pincode :- ${data[i].pincode} </label>
+                                <label><b>Address :-</b> ${data[i].blood_bank.address} </label><br>
+                                <label><b>Pincode :-</b> ${data[i].blood_bank.pincode} </label>
                               </div>
                             </div>
                           </div>  `;
@@ -215,4 +219,122 @@ $("#close").click(function(){
 
 
 
+  
+$("#info").click(function(){
+  $("#b_a").css('display','block')
+  $("#bb_a").css('display','none')
+  $("#register_form").css('display','none');
+  $("#accordion").css('display','none');
+  $("#accordion").empty();
+  var city = $("#city_s").val();
+  var ind  = groups.indexOf($("#list option:selected").text())
+  ind++;
+  if(ind !=0)
+  {
+    $("#s_c").css('display','none')
+    $("#s_g").css('display','none');
+  url3 = "http://127.0.0.1:8000/users/results/group?city="+city+"&group="+ind;
+  url4 = "http://127.0.0.1:8000/users/results/group/users?city="+city+"&group="+ind;
+  $.ajax({
+     url : url3,
+      success : function(data){
+        $("#for_btn").css('display','block')
+        console.log(data)
+      if(data.length != 0)
+      {
+        $("#accordion").css('display','block'); 
+      for(var i=0;i<data.length;i++)
+      {
+        var toAppend2 = `  <div class="card mb-1">
+<div class="card-header alert-secondary" id="headingThree">
+<h5 class="mb-0">
+  <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+    ${data[i].blood_bank.name}
+  </button>
+</h5>
+</div>
+<div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+<div class="card-body">
+  <label><b>Address :-</b> ${data[i].blood_bank.address} </label><br>
+  <label><b>State :-</b> ${data[i].blood_bank.state} </label><br>
+  <label><b>Pincode :-</b> ${data[i].blood_bank.pincode} </label>
+</div>
+</div>
+</div>  `;
+$("#accordion").append(toAppend2); 
+      }
+    }
+    else{
+      $("#s_c").css('display','block')
+    }
+    }
+  })
+  $.ajax({
+    url : url4,
+     success : function(data){
+       console.log(data)
+     if(data.length != 0)
+     {
+       $("#accordion2").css('display','block'); 
+     for(var i=0;i<data.length;i++)
+     {
+       var toAppend3 = `  <div class="card mb-1">
+<div class="card-header alert-secondary" id="headingThree">
+<h5 class="mb-0">
+ <button class="btn  collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+   ${data[i].name}
+ </button>
+</h5>
+</div>
+<div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+<div class="card-body">
+ <label><b>Address :-</b> ${data[i].address} </label><br>
+ <label><b>State :-</b> ${data[i].state} </label><br>
+ <label><b>Pincode :-</b> ${data[i].pincode} </label>
+</div>
+</div>
+</div>  `;
+$("#accordion2").append(toAppend3); 
+     }
+   }
+   else{
+    $("#accordion2").append("<h4>Data Not Found</h4>")
+     $("#s_c").css('display','block')
+   }
+   }
+ })
+
+
+  }
+  else{
+    $("#s_g").css('display','block');
+
+  }
+
+
+});
+
+$("#bloodb").click(function(){
+  $("#bloodb").css({
+    'background-color':'#fa3356',
+  })
+  $("#other_user").css({
+    'background-color':'#F89393',
+  })
+  $("#accordion").css('display','block')
+   $("#accordion2").css('display','none')
+})
+$("#other_user").click(function(){
+     $("#bloodb").css({
+    'background-color':'#F89393',
+  })
+     $("#other_user").css({
+    'background-color':'#fa3356',
+  })
+  $("#accordion").css('display','none')
+  $("#accordion2").css('display','block')
+})
+
+
 });//end document ready
+

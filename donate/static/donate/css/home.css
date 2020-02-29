@@ -83,7 +83,7 @@ body {
 
 .mybtn {
     background-color: #F977A6;
-    width: 6rem;
+    width: 10rem;
     border: none;
     height: 2rem;
 	color: white;
@@ -237,7 +237,7 @@ body {
   }
   
   .btn {
-    width: 100%;
+    width: 30%%;
     padding: 8px 10px;
     font-size: 15px;
     border: 0;
@@ -249,7 +249,7 @@ body {
   }
   
   .btn:hover {
-    background-color: #ffd658;
+    background-color: #fa3356;
   }
   
   @media (max-width: 420px) {
@@ -264,3 +264,22 @@ body {
 #register_form{
     display: none;
 }  
+.for_btn{
+  margin-top: 1rem;
+  width: 75%;
+  margin: auto;
+  padding-top: 2rem;
+  display: none;
+  
+}
+.for_btn button{
+  background-color: #F89393;
+  color:white;
+  font-weight: bold;
+  border: none;
+  width: 35%;
+  padding: .5rem;
+}
+.for_btn button:active{
+  background-color: #fa3356;
+}
