@@ -24,7 +24,7 @@ $(document).ready(function(){
             }
             else{
                 $("#hidden_p").css({'display':'none'});
-                var url = "http://127.0.0.1:8000/users/results?city="+city
+                var url = "http://darkavenger.pythonanywhere.com/users/results?city="+city
                 $.ajax({
                     url : url,
                     success:function(data){
@@ -76,7 +76,7 @@ $(document).ready(function(){
             var gnum = groups.indexOf(list);
             gnum++;
             console.log(gnum)
-            var url2 = "http://127.0.0.1:8000/users/results/group?city="+city+"&group="+gnum;
+            var url2 = "http://darkavenger.pythonanywhere.com/users/results/group?city="+city+"&group="+gnum;
             $.ajax({
                 url : url2,
                 success:function(data){
@@ -234,8 +234,8 @@ $("#info").click(function(){
   {
    
     $("#s_g").css('display','none');
-  url3 = "http://127.0.0.1:8000/users/results/group?city="+city+"&group="+ind;
-  url4 = "http://127.0.0.1:8000/users/results/group/users?city="+city+"&group="+ind;
+  url3 = "http://darkavenger.pythonanywhere.com/users/results/group?city="+city+"&group="+ind;
+  url4 = "http://darkavenger.pythonanywhere.com/users/results/group/users?city="+city+"&group="+ind;
   $.ajax({
      url : url3,
       success : function(data){
